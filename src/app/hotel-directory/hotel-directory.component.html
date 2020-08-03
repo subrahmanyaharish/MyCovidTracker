@@ -1,0 +1,30 @@
+<div class="container">
+    <input class="form-control" type="text" name="hotel" [(ngModel)]="hotel" placeholder="Hotel">
+    <input class="form-control" type="text" name="city" [(ngModel)]="city" placeholder="city">
+    <button class="btn btn-primary" (click)=addHotel()>Add</button>
+
+    <form [formGroup]="rest" class="form-inline" (ngSubmit)="onSubmit()">
+        <div class="form-group" >
+            <input class="form-control" type="text" name="hotel" formControlName="hotel" placeholder="Hotel">
+            <div style="color: red;" *ngIf="!rest.valid">Invalid</div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="city" formControlName="city" placeholder="City">
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <div>
+        <table class="table table-dark">
+            <tr>
+                <th>hotel</th>
+                <th>city</th>
+            </tr>
+            <tr *ngFor="let hotel of hotels">
+                <td>{{hotel.hotel}}</td>
+                <td>{{hotel.city}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

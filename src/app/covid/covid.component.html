@@ -1,0 +1,43 @@
+<div class="container">
+    <br>
+    <div>
+        <button mat-raised-button class="dropdown-toggle" color="primary" [matMenuTriggerFor]="state2">Select State</button>
+        <mat-menu #state2="matMenu">
+            <div *ngFor="let state of stateNames">
+                <button mat-menu-item  (click)="dataStateWise(state)">{{state}} </button>   
+            </div>      
+        </mat-menu>
+    </div>
+    <br>
+    <div *ngIf="state">
+        <mat-card>
+            <div>
+                <table class="table table-striped">
+                 <thead>
+                     <tr>
+                         <th>{{state.stateName}} </th>
+                     </tr>
+                     <tr>
+                       <th scope="col">District Name</th>
+                       <th scope="col">Active</th>
+                       <th scope="col">Confirmed</th>
+                       <th scope="col">Deceased</th>
+ 
+                       <th scope="col">Recovered</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                       <tr style="cursor: pointer;" (click)="districtWise(district, state.stateName)" *ngFor="let district of state.districtData">
+                         <th>{{district.districtName}}</th>
+                         <td>{{district.districtData.active}}</td>
+                         <td>{{district.districtData.confirmed}}</td>
+                         <td>{{district.districtData.deceased}}</td>
+                         <td>{{district.districtData.recovered}}</td>
+                       </tr>
+                   </tbody>
+             </table> 
+         </div> 
+        </mat-card>
+           
+    </div>
+</div>
